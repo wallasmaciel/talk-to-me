@@ -20,7 +20,6 @@ export default function Chat({ roomId }: IChat) {
   function sendMessage(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (currentMsg.current != null && currentMsg.current?.value != '') {
-      console.log('ces', socket != null, currentMsg.current?.value)
       const sendMsgToServer = {
         message: currentMsg.current?.value,
         username: 'Alexia Kattah',
@@ -34,7 +33,6 @@ export default function Chat({ roomId }: IChat) {
   }
 
   useEffect(() => {
-    console.log(socket != null)
     socket?.on('chat', data => {
       setChat(oldChat => [...oldChat, data])
       console.log('message:', data)
